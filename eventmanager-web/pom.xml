@@ -8,10 +8,8 @@
         <version>1.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
-    <artifactId>eventmanager-web</artifactId>
-
     <packaging>war</packaging>
+    <artifactId>eventmanager-web</artifactId>
 
     <dependencies>
         <dependency>
