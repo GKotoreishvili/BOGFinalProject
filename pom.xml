@@ -10,6 +10,9 @@
     <version>1.0</version>
     <modules>
         <module>eventmanager-core</module>
+        <module>eventmanager-model</module>
+        <module>eventmanager-web</module>
+        <module>eventmanager-ear</module>
     </modules>
 
 </project>
