@@ -11,5 +11,14 @@
 
     <artifactId>eventmanager-core</artifactId>
 
+    <packaging>ejb</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>ge.bog</groupId>
+            <artifactId>eventmanager-model</artifactId>
+            <version>1.0</version>
+        </dependency>
+    </dependencies>
 
 </project>

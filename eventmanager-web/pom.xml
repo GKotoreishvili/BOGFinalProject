@@ -11,5 +11,14 @@
 
     <artifactId>eventmanager-web</artifactId>
 
+    <packaging>war</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>ge.bog</groupId>
+            <artifactId>eventmanager-core</artifactId>
+            <version>1.0</version>
+        </dependency>
+    </dependencies>
 
 </project>
