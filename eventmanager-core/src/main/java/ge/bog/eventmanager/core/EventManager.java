@@ -5,9 +5,9 @@ import ge.bog.eventmanager.model.Event;
 import javax.ejb.*;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 @Singleton
-@Startup
 @TransactionManagement(TransactionManagementType.CONTAINER)
 public class EventManager implements EventAPI{
 
@@ -28,5 +28,11 @@ public class EventManager implements EventAPI{
     @Override
     public void deleteEvent(Event event) {
 
+    }
+
+    @Override
+    public List<Event> getEvents() {
+        return em.createQuery("select e from Event e", Event.class)
+                 .getResultList();
     }
 }

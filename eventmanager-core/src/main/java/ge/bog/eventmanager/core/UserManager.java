@@ -10,7 +10,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 @Singleton
-@Startup
 @TransactionManagement(TransactionManagementType.CONTAINER)
 public class UserManager implements UserAPI {
 

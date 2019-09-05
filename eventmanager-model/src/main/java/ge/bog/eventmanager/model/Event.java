@@ -29,30 +29,57 @@ public class Event {
     @Column(name = "START_DATE")
     private Date startDate;
 
+    @Column(name = "LOCATION")
+    private String location;
+
     @Column(name = "IMAGE_URL")
     private String imageUrl;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "EVENT_CATEGORIES")
-    private List<Category> categories = new ArrayList<>();
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Category category;
 
-    public Event(String name, String description, Date startDate, String imageUrl, Category categoryName) {
+    @ManyToOne(fetch = FetchType.EAGER)
+    private User creator;
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public User getCreator() {
+        return creator;
+    }
+
+    public void setCreator(User creator) {
+        this.creator = creator;
+    }
+
+    public Event(String name, String description, Date startDate, String imageUrl, String location, Category category) {
 
         this.name = name;
         this.description = description;
+        this.location = location;
 
-        DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
-        Date dateobj = new Date();
-
-        this.createDate = dateobj;
+        this.createDate = new Date();
 
         this.startDate = startDate;
         this.imageUrl = imageUrl;
-        this.categories.add(categoryName);
+        this.category = category;
     }
 
     public Event() {
 
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public int getId() {
@@ -101,11 +128,5 @@ public class Event {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
-    }
-
-    public static void main(String[] args) {
-
-        DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
-        Date dateobj = new Date();
     }
 }

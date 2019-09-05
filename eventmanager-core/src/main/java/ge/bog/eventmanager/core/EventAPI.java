@@ -2,8 +2,11 @@ package ge.bog.eventmanager.core;
 
 import ge.bog.eventmanager.model.Event;
 
+import java.util.List;
+
 public interface EventAPI {
-    public  void addEvent(Event event);
-    public  void editEvent(Event event);
-    public  void deleteEvent(Event event);
+    void addEvent(Event event);
+    void editEvent(Event event);
+    void deleteEvent(Event event);
+    List<Event> getEvents();
 }

@@ -1,9 +1,7 @@
 package ge.bog.eventmanager.web;
 
 import ge.bog.eventmanager.core.CategoryAPI;
-import ge.bog.eventmanager.core.EventAPI;
 import ge.bog.eventmanager.model.Category;
-import ge.bog.eventmanager.model.Event;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -12,17 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-@WebServlet("indexservlet")
-public class IndexServlet extends HttpServlet {
-
-    @Inject
-    private EventAPI eventAPI;
+@WebServlet("dispatcher")
+public class AddEventDispatcher extends HttpServlet {
 
     @Inject
     private CategoryAPI categoryAPI;
@@ -30,14 +22,12 @@ public class IndexServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         super.doGet(req, resp);
-
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-        Category category = new Category("music Fest");
-        categoryAPI.addCategory(category);
-        resp.sendRedirect("index.jsp?success=You have successfully added category!");
+        List<Category> list = categoryAPI.getCategories();
+        req.setAttribute("categories", list);
+        req.getRequestDispatcher("add_event.jsp").forward(req, resp);
     }
 }
