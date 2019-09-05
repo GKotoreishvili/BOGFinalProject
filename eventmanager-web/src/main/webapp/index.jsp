@@ -1,16 +1,13 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: gkotoreishvili
-  Date: 9/4/2019
-  Time: 12:30 PM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
+<div style="text-align: center; font-size:40px; padding: 20px">
+    Hello Java EE
 
-</body>
-</html>
+    <form action = "indexservlet" method = "POST">
+        First Name: <input type = "text" name = "firstname">
+        <br />
+        Last Name: <input type = "text" name = "lastname">
+        <br />
+        PhoneNumber Name: <input type = "text" name = "phonenumber">
+        <br />
+        <input type = "submit" value = "Add Event" />
+    </form>
+</div>
