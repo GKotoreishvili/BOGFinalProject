@@ -6,5 +6,8 @@ public interface UserAPI {
     void addUser(User user);
     void editUser(User user);
     void deleteUser(User user);
-    void searchUser(User user);
+    User searchUser(int id);
+    boolean checkUserName(String userName);
+    boolean checkLogin(String userName, String password);
+    boolean checkPhoneNumber(String phoneNumber);
 }

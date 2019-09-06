@@ -2,7 +2,12 @@
 <%@ page import="ge.bog.eventmanager.core.EventManager" %>
 <%@ page import="ge.bog.eventmanager.model.Event" %>
 <%@ page import="java.util.List" %>
-
+<div class="cover">
+    <div class="hero-text">
+        <button class="btn btn-danger btn-lg" data-toggle="modal" data-target="#logIn">LOG IN</button>
+        <a href="register.jsp" class="btn btn-danger btn-lg">SIGN UP</a>
+    </div>
+</div>
 <div style="text-align: center; font-size:40px; padding: 20px">
 
         <table>

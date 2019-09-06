@@ -36,9 +36,11 @@ public class Event {
     private String imageUrl;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "CATEGPRY_ID")
     private Category category;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "CREATOR_ID")
     private User creator;
 
     public String getLocation() {

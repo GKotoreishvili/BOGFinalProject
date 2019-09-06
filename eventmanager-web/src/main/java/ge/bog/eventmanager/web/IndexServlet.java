@@ -36,8 +36,5 @@ public class IndexServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        Category category = new Category("music Fest");
-        categoryAPI.addCategory(category);
-        resp.sendRedirect("index.jsp?success=You have successfully added category!");
     }
 }
