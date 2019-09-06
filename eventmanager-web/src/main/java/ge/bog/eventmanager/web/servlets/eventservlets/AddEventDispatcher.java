@@ -1,4 +1,4 @@
-package ge.bog.eventmanager.web;
+package ge.bog.eventmanager.web.servlets.eventservlets;
 
 import ge.bog.eventmanager.core.CategoryAPI;
 import ge.bog.eventmanager.model.Category;
@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 
 @WebServlet("dispatcher")
 public class AddEventDispatcher extends HttpServlet {

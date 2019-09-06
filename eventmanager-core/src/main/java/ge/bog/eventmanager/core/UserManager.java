@@ -24,11 +24,6 @@ public class UserManager implements UserAPI {
     }
 
     @Override
-    public void editUser(User user) {
-
-    }
-
-    @Override
     public void deleteUser(User user) {
         em.createQuery("delete from User where id = :id")
                 .setParameter("id", user.getId())
@@ -36,7 +31,7 @@ public class UserManager implements UserAPI {
     }
 
     @Override
-    public User searchUser(int id) {
+    public User getUser(int id) {
         return em.createQuery("select u from User u where u.id = :id", User.class)
                  .setParameter("id", id)
                  .getSingleResult();

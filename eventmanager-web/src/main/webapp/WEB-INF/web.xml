@@ -5,7 +5,7 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
 
     <welcome-file-list>
-        <welcome-file>root.jsp</welcome-file>
+        <welcome-file>indexservlet</welcome-file>
     </welcome-file-list>
 
 </web-app>

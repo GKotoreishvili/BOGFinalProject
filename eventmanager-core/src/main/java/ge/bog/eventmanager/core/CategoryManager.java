@@ -13,6 +13,7 @@ import java.util.Map;
 
 @Singleton
 @TransactionManagement(TransactionManagementType.CONTAINER)
+@ConcurrencyManagement(ConcurrencyManagementType.CONTAINER)
 public class CategoryManager implements CategoryAPI {
 
     @PersistenceContext
@@ -20,24 +21,21 @@ public class CategoryManager implements CategoryAPI {
 
     @Override
     @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+    @Lock(LockType.READ)
     public void addCategory(Category category) {
         em.persist(category);
     }
 
     @Override
-    public void editCategory(Category category, String name) {
-
-        em.createQuery("update Category set name = :name where id = :id")
-                .setParameter("name", name)
+    @Lock(LockType.WRITE)
+    public void deleteCategory(Category category) {
+        em.createQuery("delete from Category where id =:id")
                 .setParameter("id", category.getId())
                 .executeUpdate();
     }
 
     @Override
-    public void deleteCategory(Category category) {
-
-    }
-
+    @Lock(LockType.READ)
     public boolean findCategory(Category category) {
         List<Category> id = em.createQuery("select c from Category c", Category.class)
                             .getResultList();
@@ -45,6 +43,8 @@ public class CategoryManager implements CategoryAPI {
         return true;
     }
 
+    @Override
+    @Lock(LockType.READ)
     public Category getCategory(int id) {
         return em.createQuery("select c from Category c where c.id = :id", Category.class)
                 .setParameter("id", id)
@@ -52,6 +52,7 @@ public class CategoryManager implements CategoryAPI {
     }
 
     @Override
+    @Lock(LockType.READ)
     public List<Category> getCategories() {
         return em.createQuery("select c from Category c", Category.class)
                 .getResultList();

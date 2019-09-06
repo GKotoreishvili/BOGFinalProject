@@ -1,12 +1,7 @@
 package ge.bog.eventmanager.model;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Date;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.List;
 
 @Entity
 public class Event {
@@ -59,7 +54,7 @@ public class Event {
         this.creator = creator;
     }
 
-    public Event(String name, String description, Date startDate, String imageUrl, String location, Category category) {
+    public Event(String name, String description, Date startDate, String imageUrl, String location, Category category, User user) {
 
         this.name = name;
         this.description = description;
@@ -70,6 +65,7 @@ public class Event {
         this.startDate = startDate;
         this.imageUrl = imageUrl;
         this.category = category;
+        this.creator = user;
     }
 
     public Event() {

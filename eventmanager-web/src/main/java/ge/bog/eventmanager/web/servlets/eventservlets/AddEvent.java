@@ -1,7 +1,8 @@
-package ge.bog.eventmanager.web;
+package ge.bog.eventmanager.web.servlets.eventservlets;
 
 import ge.bog.eventmanager.core.CategoryAPI;
 import ge.bog.eventmanager.core.EventAPI;
+import ge.bog.eventmanager.core.UserAPI;
 import ge.bog.eventmanager.model.Category;
 import ge.bog.eventmanager.model.Event;
 
@@ -25,6 +26,9 @@ public class AddEvent extends HttpServlet {
 
     @Inject
     private CategoryAPI categoryAPI;
+
+    @Inject
+    private UserAPI userAPI;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -81,7 +85,7 @@ public class AddEvent extends HttpServlet {
         }
         System.out.println(startDate);
 
-        eventAPI.addEvent(new Event(name, description, startDate, image, location, category1));
-        resp.sendRedirect("index.jsp?success=You have successfully created event!");
+        eventAPI.addEvent(new Event(name, description, startDate, image, location, category1, userAPI.getUser(1)));
+        resp.sendRedirect("indexservlet?success=You have successfully created event!");
     }
 }
