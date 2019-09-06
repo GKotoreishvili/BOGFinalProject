@@ -8,7 +8,9 @@ import java.util.Map;
 public interface CategoryAPI {
     void addCategory(Category category);
     void deleteCategory(Category category);
+    void updateCategory(Category category, String name);
     Category getCategory(int id);
     List<Category> getCategories();
-    boolean findCategory(Category category);
+    boolean findCategory(String name);
+    boolean checkIfInUse(Category category);
 }

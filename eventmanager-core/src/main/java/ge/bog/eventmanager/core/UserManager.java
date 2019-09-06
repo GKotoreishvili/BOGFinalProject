@@ -10,6 +10,7 @@ import java.util.List;
 
 @Singleton
 @TransactionManagement(TransactionManagementType.CONTAINER)
+@ConcurrencyManagement(ConcurrencyManagementType.CONTAINER)
 public class UserManager implements UserAPI {
 
     @PersistenceContext
@@ -17,6 +18,7 @@ public class UserManager implements UserAPI {
 
     @Override
     @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+    @Lock(LockType.READ)
     public void addUser(User user) {
         System.out.println("GIVIIIIIII");
         em.persist(user);
@@ -24,6 +26,8 @@ public class UserManager implements UserAPI {
     }
 
     @Override
+    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+    @Lock(LockType.WRITE)
     public void deleteUser(User user) {
         em.createQuery("delete from User where id = :id")
                 .setParameter("id", user.getId())
@@ -31,6 +35,8 @@ public class UserManager implements UserAPI {
     }
 
     @Override
+    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+    @Lock(LockType.READ)
     public User getUser(int id) {
         return em.createQuery("select u from User u where u.id = :id", User.class)
                  .setParameter("id", id)
@@ -38,6 +44,8 @@ public class UserManager implements UserAPI {
     }
 
     @Override
+    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+    @Lock(LockType.READ)
     public boolean checkUserName(String userName) {
         List<User> list = em.createQuery("select u from User u where u.userName = :username", User.class)
                             .setParameter("username", userName)
@@ -47,6 +55,8 @@ public class UserManager implements UserAPI {
     }
 
     @Override
+    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+    @Lock(LockType.READ)
     public boolean checkLogin(String userName, String password) {
         List<User> list = em.createQuery("select u from User u where u.userName = :" +
                             " username and u.password = :password", User.class)
@@ -58,6 +68,8 @@ public class UserManager implements UserAPI {
     }
 
     @Override
+    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+    @Lock(LockType.READ)
     public boolean checkPhoneNumber(String phoneNumber) {
         List<User> list = em.createQuery("select u from User u where u.phoneNumber = :phonenumber", User.class)
                 .setParameter("phonenumber", phoneNumber)

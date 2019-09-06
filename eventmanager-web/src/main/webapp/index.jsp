@@ -7,6 +7,7 @@
     <div class="hero-text">
         <a href="login.jsp" class="btn btn-danger btn-lg">LOG IN</a>
         <a href="register.jsp" class="btn btn-danger btn-lg">SIGN UP</a>
+        <a href="allcategories" class="btn btn-danger btn-lg">Manage Categories</a>
     </div>
 </div>
 <div style="text-align: center; font-size:40px; padding: 20px">

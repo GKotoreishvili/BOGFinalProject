@@ -26,6 +26,7 @@ public class EventManager implements EventAPI{
     }
 
     @Override
+    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     @Lock(LockType.WRITE)
     public void deleteEvent(Event event) {
         em.createQuery("delete from Event where id =:id")
@@ -34,6 +35,7 @@ public class EventManager implements EventAPI{
     }
 
     @Override
+    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     @Lock(LockType.WRITE)
     public void updateName(Event event, String name) {
         em.createQuery("update Event set name =:name where id =:id")
@@ -43,6 +45,7 @@ public class EventManager implements EventAPI{
     }
 
     @Override
+    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     @Lock(LockType.WRITE)
     public void updateDescription(Event event, String description) {
         em.createQuery("update Event set description =:description where id =:id")
@@ -52,6 +55,7 @@ public class EventManager implements EventAPI{
     }
 
     @Override
+    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     @Lock(LockType.WRITE)
     public void updateStartDate(Event event, Date startDate) {
         em.createQuery("update Event set startDate =:startdate where id =:id")
@@ -61,6 +65,7 @@ public class EventManager implements EventAPI{
     }
 
     @Override
+    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     @Lock(LockType.WRITE)
     public void updateLocation(Event event, String location) {
         em.createQuery("update Event set location =:location where id =:id")
@@ -70,6 +75,7 @@ public class EventManager implements EventAPI{
     }
 
     @Override
+    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     @Lock(LockType.WRITE)
     public void updateImageUrl(Event event, String imageUrl) {
         em.createQuery("update Event set imageUrl =:imageUrl where id =:id")
@@ -79,6 +85,7 @@ public class EventManager implements EventAPI{
     }
 
     @Override
+    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     @Lock(LockType.WRITE)
     public void updateCategory(Event event, Category category) {
         em.createQuery("update Event set category =:category where id =:id")
@@ -88,6 +95,7 @@ public class EventManager implements EventAPI{
     }
 
     @Override
+    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     @Lock(LockType.READ)
     public Event getEvent(int id) {
         return (Event) em.createQuery("select e from Event e where e.id =:id")
@@ -104,6 +112,7 @@ public class EventManager implements EventAPI{
     }
 
     @Override
+    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     @Lock(LockType.READ)
     public List<Event> getUserEvents(User user) {
         return em.createQuery("select e from Event e where e.creator =:user", Event.class)
